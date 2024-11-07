@@ -130,6 +130,41 @@ public class CheckNumberFrame extends javax.swing.JFrame {
         checkNumber();
     }//GEN-LAST:event_checkButtonActionPerformed
     
+    private boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    
+    private void checkNumber() {
+        String input = inputField.getText();
+        if (input.isEmpty()) {
+            resultLabel.setText("Masukkan angka terlebih dahulu.");
+            return;
+        }
+
+        int number = Integer.parseInt(input);
+
+        // Cek Genap atau Ganjil
+        String result = (number % 2 == 0) ? "Genap" : "Ganjil";
+
+        // Cek Bilangan Prima
+        if (isPrime(number)) {
+            result += " dan Bilangan Prima";
+        } else {
+            result += " dan Bukan Bilangan Prima";
+        }
+
+        resultLabel.setText("Angka " + number + " adalah " + result + ".");
+    }
+
     /**
      * @param args the command line arguments
      */
