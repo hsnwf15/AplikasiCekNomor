@@ -55,9 +55,14 @@ public class CheckNumberFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel1.add(jLabel2, gridBagConstraints);
 
-        inputField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputFieldActionPerformed(evt);
+        inputField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputFieldFocusGained(evt);
+            }
+        });
+        inputField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputFieldKeyTyped(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -69,6 +74,11 @@ public class CheckNumberFrame extends javax.swing.JFrame {
         jPanel1.add(inputField, gridBagConstraints);
 
         checkButton.setText("Cek");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -105,10 +115,21 @@ public class CheckNumberFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputFieldActionPerformed
+    private void inputFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputFieldKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Mengabaikan input yang bukan angka
+        }
+    }//GEN-LAST:event_inputFieldKeyTyped
 
+    private void inputFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputFieldFocusGained
+        inputField.setText(""); // Membersihkan inputField saat mendapatkan fokus
+    }//GEN-LAST:event_inputFieldFocusGained
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        checkNumber();
+    }//GEN-LAST:event_checkButtonActionPerformed
+    
     /**
      * @param args the command line arguments
      */
