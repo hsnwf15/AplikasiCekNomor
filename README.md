@@ -34,6 +34,9 @@ Aplikasi CheckNumberApp adalah aplikasi sederhana berbasis GUI yang dibuat mengg
 - KeyListener pada inputField: Mencegah input karakter non-numerik.
 - FocusListener pada inputField: Membersihkan JTextField saat mendapatkan fokus.
 
+## Screenshot berjalannya Program
+![Screenshot berjalannya Program](images.png)
+
 ## Contoh Penggunaan
 1. Masukkan angka pada JTextField.
 2. Klik tombol Cek.
